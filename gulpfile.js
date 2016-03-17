@@ -1,5 +1,6 @@
 var gulp = require('gulp'),
     touch = require('touch'),
+    sass = require('gulp-sass'),
     webpack = require('webpack'),
     WebpackDevServer = require('webpack-dev-server'),
     webpackConfig = require('./webpack.config.js');
@@ -7,7 +8,9 @@ var gulp = require('gulp'),
 var devServer = {};
 
 gulp.task('css', function () {
-  // nil
+  return gulp.src('./src/styles/main.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('copy-assets', function () {

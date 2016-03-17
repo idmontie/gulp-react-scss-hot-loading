@@ -17,19 +17,22 @@ module.exports = {
     modulesDirectories: ['node_modules']
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      DEBUG: true
+    })
   ],
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
   module: {
-      loaders: [
-          {
-            test: /\.js(x)?$/,
-            exclude: /node_modules/,
-            loaders: ['react-hot', 'babel?presets[]=es2015&presets[]=react']
-            
-          }
-      ]
+    loaders: [
+      { test: /\.css$/, loaders: ['style', 'css']},
+      {
+        test: /\.js(x)?$/,
+        exclude: /node_modules/,
+        loaders: ['react-hot', 'babel?presets[]=es2015&presets[]=react']
+      }
+    ]
   }
 };

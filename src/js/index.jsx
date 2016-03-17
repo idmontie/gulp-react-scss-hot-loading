@@ -12,3 +12,7 @@ const Index = React.createClass({
 })
 
 ReactDOM.render(<Index />, document.getElementById('react-target'));
+
+if (DEBUG) {
+  require('../../dist/main.css');
+}

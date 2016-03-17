@@ -8,6 +8,10 @@ export default React.createClass({
 
         <div className="lol">
           Wow! Insane!
+
+          <div className="incredible">
+            +1
+          </div>
         </div>
       </div>
     )
