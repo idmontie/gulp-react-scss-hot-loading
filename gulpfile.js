@@ -18,10 +18,17 @@ gulp.task('copy-assets', function () {
       .pipe(gulp.dest('./dist'));
 });
 
+gulp.task('webpack-prod', function(callback) {
+  process.env.NODE_ENV = 'production';
+  webpack(webpackConfig('PROD'), function(err, stats) {
+    callback();
+  });
+});
+
 gulp.task('webpack-dev-server', ['css'], function(callback) {
   touch.sync('./dist/styles/main.css', {time : new Date(0) });
 
-  devServer = new WebpackDevServer(webpack(webpackConfig), {
+  devServer = new WebpackDevServer(webpack(webpackConfig('DEBUG')), {
     contentBase: './dist',
     hot: true,
     watchOptions: {
@@ -49,6 +56,8 @@ gulp.task('watch', ['css', 'copy-assets', 'webpack-dev-server'], function () {
   gulp.watch(['src/styles/**'], ['css']);
   gulp.watch(['assets/**'], ['copy-assets']);
 });
+
+gulp.task('build', ['css', 'copy-assets', 'webpack-prod']);
 
 gulp.task('default', function () {
   gulp.start('build');

@@ -21,7 +21,7 @@ export default React.createClass({
         <p>Test and intense!?</p>
 
         <div className="lol">
-          Wow! Insane! lol
+          Wow! Insane! lol wow
 
           <div className="incredible">
             +100
