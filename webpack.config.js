@@ -10,7 +10,8 @@ module.exports = {
   devtool: "eval",
   debug: true,
   output: {
-    path: path.join(__dirname, "dist"),
+    path: path.join(__dirname, 'dist', 'js'),
+    publicPath: '/js/',
     filename: 'index.js'
   },
   resolveLoader: {

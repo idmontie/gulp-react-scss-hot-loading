@@ -10,7 +10,7 @@ var devServer = {};
 gulp.task('css', function () {
   return gulp.src('./src/styles/main.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('./dist'));
+    .pipe(gulp.dest('./dist/styles'));
 });
 
 gulp.task('copy-assets', function () {
@@ -19,7 +19,7 @@ gulp.task('copy-assets', function () {
 });
 
 gulp.task('webpack-dev-server', ['css'], function(callback) {
-  touch.sync('./dist/main.css', {time : new Date(0) });
+  touch.sync('./dist/styles/main.css', {time : new Date(0) });
 
   devServer = new WebpackDevServer(webpack(webpackConfig), {
     contentBase: './dist',
@@ -28,6 +28,7 @@ gulp.task('webpack-dev-server', ['css'], function(callback) {
       aggregateTimeout: 100,
       poll: 300
     },
+    publicPath: '/js/',
     noInfo: true
   });
 
