@@ -5,5 +5,12 @@ export function addTodo(text) {
     type: 'ADD_TODO',
     id: currentTodoId++,
     text
-  }
-}
+  };
+};
+
+export function toggleTodo(id) {
+  return {
+    type: 'TOGGLE_TODO',
+    id: id
+  };
+};
