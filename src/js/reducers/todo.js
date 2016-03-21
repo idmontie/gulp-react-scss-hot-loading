@@ -14,7 +14,7 @@ export default (state = [], action) => {
 
         return {
           ...todo,
-          isCompleted: ! todo.isCompleted
+          isCompleted: ! todo.isCompleted,
         };
       });
     default:

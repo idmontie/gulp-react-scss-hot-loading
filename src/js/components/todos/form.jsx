@@ -4,6 +4,10 @@ import { connect } from 'react-redux';
 import { addTodo } from '../../actions/todo';
 
 class TodoForm extends React.Component {
+  static propTypes = {
+    dispatch: React.PropTypes.func.isRequired,
+  }
+
   handleSubmit = (event) => {
     event.preventDefault();
 
@@ -22,7 +26,7 @@ class TodoForm extends React.Component {
           <button type="submit">Add Todo</button>
         </form>
       </div>
-    )
+    );
   }
 }
 
