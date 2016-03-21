@@ -1,17 +1,33 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
+import { Router, Route, browserHistory } from 'react-router'
+import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 
-import Test from './components/test.jsx';
+import App from './components/app.jsx';
+import SingleTodo from './components/todos/single.jsx';
 
-const Index = React.createClass({
-  render() {
-    return (
-      <Test />
-    );
-  }
-})
+import todoReducer from './reducers/todo';
 
-ReactDOM.render(<Index />, document.getElementById('react-target'));
+const store = createStore(
+  combineReducers({
+    todos: todoReducer,
+    routing: routerReducer
+  })
+);
+
+const history = syncHistoryWithStore(browserHistory, store);
+
+ReactDOM.render(
+  <Provider store={store}>
+    <Router history={history}>
+      <Route path="/" component={App} />
+      <Route path="/todos/:id" component={SingleTodo} />
+    </Router>
+  </Provider>,
+  document.getElementById('react-target')
+);
 
 if (DEBUG) {
   require('../../dist/styles/main.css');

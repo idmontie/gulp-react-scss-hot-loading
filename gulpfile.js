@@ -36,7 +36,8 @@ gulp.task('webpack-dev-server', ['css'], function(callback) {
       poll: 300
     },
     publicPath: '/js/',
-    noInfo: true
+    noInfo: true,
+    historyApiFallback: true
   });
 
   devServer.listen(3000, "0.0.0.0", function (err) {
@@ -54,7 +55,7 @@ gulp.task('webpack-dev-server', ['css'], function(callback) {
 
 gulp.task('watch', ['css', 'copy-assets', 'webpack-dev-server'], function () {
   gulp.watch(['src/styles/**'], ['css']);
-  gulp.watch(['assets/**'], ['copy-assets']);
+  gulp.watch(['assets/**', 'src/index.html'], ['copy-assets']);
 });
 
 gulp.task('build', ['css', 'copy-assets', 'webpack-prod']);

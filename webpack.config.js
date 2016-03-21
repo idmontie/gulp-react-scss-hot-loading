@@ -14,7 +14,7 @@ module.exports = function (type) {
       './src/js/index.jsx'
     ];
     exportables.DEBUG = true;
-    loaders = ['react-hot', 'babel?presets[]=es2015&presets[]=react'];
+    loaders = ['react-hot', 'babel?presets[]=es2015&presets[]=react&presets[]=stage-2'];
     plugins = [
       new webpack.HotModuleReplacementPlugin(),
       new webpack.DefinePlugin(exportables)
@@ -24,7 +24,7 @@ module.exports = function (type) {
       './src/js/index.jsx'
     ];
     exportables.DEBUG = false;
-    loaders = ['babel?presets[]=es2015&presets[]=react'];
+    loaders = ['babel?presets[]=es2015&presets[]=react&presets[]=stage-2'];
     plugins = [
       new webpack.DefinePlugin(exportables)
     ];
