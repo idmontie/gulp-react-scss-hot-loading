@@ -1,8 +1,8 @@
 # Gulp + React + SCSS + hot-loading
 
-Example repo to get the pipeline down
+Example repo to get the entire React pipeline down
 
-Uses the following:
+## What is included
 
 Scripts:
 
@@ -21,3 +21,7 @@ View Layer:
 * React Redux
 * React Router
 * React Router Redux
+
+Extra:
+
+* eslint – uses AirBnB config

@@ -3,7 +3,8 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     webpack = require('webpack'),
     WebpackDevServer = require('webpack-dev-server'),
-    webpackConfig = require('./webpack.config.js');
+    webpackConfig = require('./webpack.config.js'),
+    eslint = require('gulp-eslint');
 
 var devServer = {};
 
@@ -58,8 +59,15 @@ gulp.task('watch', ['css', 'copy-assets', 'webpack-dev-server'], function () {
   gulp.watch(['assets/**', 'src/index.html'], ['copy-assets']);
 });
 
+gulp.task('lint', function() {
+  return gulp.src(['src/js/**'])
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
+});
+
 gulp.task('build', ['css', 'copy-assets', 'webpack-prod']);
 
-gulp.task('default', function () {
+gulp.task('default', ['lint'], function () {
   gulp.start('build');
 });

@@ -10,4 +10,10 @@ class SingleTodo extends React.Component {
   }
 }
 
+SingleTodo.propTypes = {
+  params: React.PropTypes.shape({
+    id: React.PropTypes.number,
+  }),
+};
+
 export default SingleTodo;
