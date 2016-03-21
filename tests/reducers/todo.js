@@ -3,7 +3,7 @@ import { expect } from 'chai';
 import todoReducer from '../../src/js/reducers/todo';
 
 describe('todo reducer', () => {
-  it('should a todo', () => {
+  it('should add a todo', () => {
     const stateBefore = [];
     const action = {
       type: 'ADD_TODO',
