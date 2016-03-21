@@ -1,6 +1,17 @@
 var path = require('path');
 var webpack = require('webpack');
 
+var babelSettings = {
+  'presets': [
+    'es2015',
+    'react',
+    'stage-2'
+  ],
+  'plugins': [
+    'transform-class-properties'
+  ]
+}
+
 module.exports = function (type) {
   var entry,
       exportables = {},
@@ -14,7 +25,7 @@ module.exports = function (type) {
       './src/js/index.jsx'
     ];
     exportables.DEBUG = true;
-    loaders = ['react-hot', 'babel?presets[]=es2015&presets[]=react&presets[]=stage-2'];
+    loaders = ['react-hot', 'babel?' + JSON.stringify(babelSettings)];
     plugins = [
       new webpack.HotModuleReplacementPlugin(),
       new webpack.DefinePlugin(exportables)
@@ -24,7 +35,7 @@ module.exports = function (type) {
       './src/js/index.jsx'
     ];
     exportables.DEBUG = false;
-    loaders = ['babel?presets[]=es2015&presets[]=react&presets[]=stage-2'];
+    loaders = ['babel?' + JSON.stringify(babelSettings)];
     plugins = [
       new webpack.DefinePlugin(exportables)
     ];

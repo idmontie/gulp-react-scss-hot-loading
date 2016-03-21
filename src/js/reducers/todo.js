@@ -6,6 +6,17 @@ export default (state = [], action) => {
         text: action.text,
         isCompleted: false,
       }];
+    case 'TOGGLE_TODO':
+      return state.map((todo) => {
+        if (todo.id !== action.id) {
+          return todo;
+        }
+
+        return {
+          ...todo,
+          isCompleted: ! todo.isCompleted
+        };
+      });
     default:
       return state;
   }

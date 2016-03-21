@@ -1,6 +1,12 @@
 import React from 'react';
 
 class SingleTodo extends React.Component {
+  static propTypes = {
+    params: React.PropTypes.shape({
+      id: React.PropTypes.number,
+    }),
+  }
+
   render() {
     return (
       <div>
@@ -9,11 +15,5 @@ class SingleTodo extends React.Component {
     );
   }
 }
-
-SingleTodo.propTypes = {
-  params: React.PropTypes.shape({
-    id: React.PropTypes.number,
-  }),
-};
 
 export default SingleTodo;
