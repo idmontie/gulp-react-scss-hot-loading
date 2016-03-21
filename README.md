@@ -25,3 +25,9 @@ View Layer:
 Extra:
 
 * eslint – uses AirBnB config
+
+
+## Get the DevTools
+
+* [Facebook React DevTools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
+* [Redux DevTools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd)

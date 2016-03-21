@@ -10,7 +10,15 @@ import SingleTodo from './components/todos/single.jsx';
 
 import todoReducer from './reducers/todo';
 
-const store = createStore(
+let createStoreDebuggable = createStore;
+
+if (DEBUG) {
+  if (window.devToolsExtension) {
+    createStoreDebuggable = window.devToolsExtension()(createStore);
+  }
+}
+
+const store = createStoreDebuggable(
   combineReducers({
     todos: todoReducer,
     routing: routerReducer,
