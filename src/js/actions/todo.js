@@ -1,16 +1,15 @@
-
 let currentTodoId = 0;
-export function addTodo(text) {
+export const addTodo = (text) => {
   return {
     type: 'ADD_TODO',
     id: currentTodoId++,
     text,
   };
-}
+};
 
-export function toggleTodo(id) {
+export const toggleTodo = (id) => {
   return {
     type: 'TOGGLE_TODO',
     id,
   };
-}
+};

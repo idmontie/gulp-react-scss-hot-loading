@@ -9,6 +9,7 @@ import App from './components/app.jsx';
 import SingleTodo from './components/todos/single.jsx';
 
 import todoReducer from './reducers/todo';
+import uiReducer from './reducers/ui';
 
 let createStoreDebuggable = createStore;
 
@@ -21,6 +22,7 @@ if (DEBUG) {
 const store = createStoreDebuggable(
   combineReducers({
     todos: todoReducer,
+    ui: uiReducer,
     routing: routerReducer,
   })
 );
