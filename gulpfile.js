@@ -1,10 +1,13 @@
+require('babel-core/register');
+
 var gulp = require('gulp'),
     touch = require('touch'),
     sass = require('gulp-sass'),
     webpack = require('webpack'),
     WebpackDevServer = require('webpack-dev-server'),
     webpackConfig = require('./webpack.config.js'),
-    eslint = require('gulp-eslint');
+    eslint = require('gulp-eslint'),
+    mocha = require('gulp-mocha');
 
 var devServer = {};
 
@@ -66,8 +69,15 @@ gulp.task('lint', function() {
     .pipe(eslint.failAfterError());
 });
 
+gulp.task('test', function () {
+  gulp.src([
+    'tests/**/*.js',
+    'tests/**/*.jsx'
+  ]).pipe(mocha());
+});
+
 gulp.task('build', ['css', 'copy-assets', 'webpack-prod']);
 
-gulp.task('default', ['lint'], function () {
+gulp.task('default', ['lint', 'test'], function () {
   gulp.start('build');
 });
